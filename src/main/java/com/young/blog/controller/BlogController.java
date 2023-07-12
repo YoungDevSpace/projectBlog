@@ -47,16 +47,35 @@ public class BlogController {
 //        blogService.update(blog_id, requestDto); // service쪽에서 처리, requestDto 수정할 내용
 //    }
 
-    @PutMapping("/blogs/")
-    public void update(@RequestParam Long blog_id, @RequestBody BlogRequestDto requestDto){
-        blogService.update(blog_id, requestDto); // service쪽에서 처리, requestDto 수정할 내용
+    @PutMapping("/blogs/{blog_id}")
+    public BlogResponseDto update(@RequestParam Long blog_id, @RequestBody BlogRequestDto requestDto){
+         // service쪽에서 처리, requestDto 수정할 내용
+        BlogResponseDto blogResponseDto = blogService.update(blog_id, requestDto);
+        return blogResponseDto;
     }
 
-//    @DeleteMapping("/blogs/{blog_id}")
-//    public void delete(@PathVariable Long blog_id) {
-//
-//        blogService.delete(blog_id);
-//    }
+    @DeleteMapping("/blogs/{blog_id}")
+    public void delete(@PathVariable Long blog_id) {
+        blogService.delete(blog_id);
+    }
+
+    @GetMapping("/blogs/{blog_id}")
+    public BlogResponseDto getBlog(@PathVariable Long blog_id) {
+        BlogResponseDto responseDto = blogService.getBlog(blog_id);
+        return responseDto;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
 //    @GetMapping("/blogs")
 //    public getBlog(@PathVariable Long blog_id) {
@@ -65,7 +84,7 @@ public class BlogController {
 //        BlogResponseDto responseDto = blogService.getBlog(blog_id);
 //        return responseDto;
 //    }
-//
+
 //    @GetMapping("/blogs")
 //    public getBlogList() {
 //        List<BlogResponseDto>blogList = blogService.getBlogList();

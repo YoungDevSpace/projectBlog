@@ -32,10 +32,14 @@ public class Blog {
 //    }
 // @NoArgsConstructor
 
-    public void update(BlogRequestDto requestDto) {
+    // 자바의 객체 생성자, 클래스 메서드 만드는 거 알자
+    public Blog update(BlogRequestDto requestDto) {
         this.title = requestDto.getTitle();
         this.contents = requestDto.getContents();
         this.username = requestDto.getUsername();
         this.password = requestDto.getPassword();
+
+        return new Blog();
     }
+
 }

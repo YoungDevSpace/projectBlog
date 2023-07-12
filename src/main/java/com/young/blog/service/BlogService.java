@@ -29,7 +29,7 @@ public class BlogService {
     }
 
     @Transactional
-    public void update(Long blog_id, BlogRequestDto requestDto) {
+    public BlogResponseDto update(Long blog_id, BlogRequestDto requestDto) {
         // 1. 어떤 블로그인지 찾아야지?
         // 어떻게 찾아야하나
 
@@ -40,6 +40,8 @@ public class BlogService {
 
         // -> 이 찾은 블로그를 만들어 줘야됨
 
+        // 자바의 객체 생성자, 클래스 메서드 만드는 거 알자
+
         Blog findBlog = blogRepository.findById(blog_id).orElse(null); // 데이터베이스에서 블로그 찾는 것. 찾은 블로그 만들어주는 것
         // .orElse(null)
         // orElse
@@ -48,16 +50,46 @@ public class BlogService {
         // 그럼 블로그 엔티티가서 수정한 내용을 받아서
         // 기존내용이랑 수정내용을 바꿔주면 되겠다~!
 
-        findBlog.update(requestDto);//찾은 내용을 수정
+        // findBlog.update(requestDto);//찾은 내용을 수정
+        // 여기까지가 수정 끝
 
+        // 그럼 수정한 내용을 보내주면 된다
+        // entity -> dto바꿔서
 
+        Blog updateBlog = findBlog.update(requestDto); // ->updateBlog
+
+        // entity -> dto바꿔서
+        BlogResponseDto responseDto = new BlogResponseDto(updateBlog);
+        return responseDto;
 
     }
 
-//    public void delete(Long blogId) {
+    public void delete(Long blog_id) {
+//        // 어떤 블로그인지 찾아야지
+//        Blog findBlog = blogRepository.findById(blog_id).orElse(null); // 데이터베이스에서 블로그 찾는 것.
+//        // 어떻게 찾느냐
+//        blogRepository.delete(findBlog);
+        blogRepository.deleteById(blog_id);
+    }
+
+
+    public BlogResponseDto getBlog(Long blog_id) {
+        Blog findBlog = blogRepository.findById(blog_id).orElse(null); //
+        BlogResponseDto responseDto = new BlogResponseDto(findBlog);
+        return responseDto;
+    }
+
 //
-//        blogRepository.deleteById(blogId);
-//    }
+
+
+
+
+
+
+
+
+
+
 
 //    public getBlog(Long blog_id) {
 //        Blog findBlog = blogRepository.findById(blog_id).orElse(null);
