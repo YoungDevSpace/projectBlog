@@ -56,11 +56,27 @@ public class BlogService {
         // 그럼 수정한 내용을 보내주면 된다
         // entity -> dto바꿔서
 
-        Blog updateBlog = findBlog.update(requestDto); // ->updateBlog
+        // 수정하기전에 비밀번호 확인하면 되겠죠?
+        // 찾은 블로그가 위에 있어요~! 저 블로그 안에 비밀번호 있겠죠?
+        // 내가 보낸 비밀번호랑 저기 블로그 비밀번호랑 확인하면 되지 않을까요?
 
-        // entity -> dto바꿔서
+//        if(findBlog.getPassword() == requestDto.getPassword()) {
+//            Blog updateBlog = findBlog.update(requestDto);
+//        } else {
+//            throw new IllegalArgumentException("wrong password");
+//        }
+
+        if(findBlog.getPassword() != requestDto.getPassword()) {
+            throw new IllegalArgumentException("wrong password");
+        }
+        Blog updateBlog = findBlog.update(requestDto);
         BlogResponseDto responseDto = new BlogResponseDto(updateBlog);
         return responseDto;
+        // Blog updateBlog = findBlog.update(requestDto); // ->updateBlog
+
+        // entity -> dto바꿔서
+        //BlogResponseDto responseDto = new BlogResponseDto(updateBlog);
+        //return responseDto;
 
     }
 
@@ -79,7 +95,16 @@ public class BlogService {
         return responseDto;
     }
 
-//
+// 전체
+    public List<BlogResponseDto> getBlogList() {
+        List<Blog> foundBlogList = blogRepository.findAll();
+        List<BlogResponseDto> blogList = new ArrayList<>();
+
+        for(Blog blog : foundBlogList) {
+            blogList.add(new BlogResponseDto(blog));
+        }
+        return blogList;
+    }
 
 
 

@@ -65,6 +65,11 @@ public class BlogController {
         return responseDto;
     }
 
+    @GetMapping("/blogs")
+    public List<BlogResponseDto> getBlogList(){
+        List<BlogResponseDto>blogList = blogService.getBlogList();
+        return blogList;
+    }
 
 
 
