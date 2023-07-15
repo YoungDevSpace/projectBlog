@@ -1,4 +1,4 @@
-package com.young.blog.dto;
+package com.young.blog.Blog.dto;
 
 import lombok.Getter;
 @Getter

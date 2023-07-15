@@ -1,6 +1,6 @@
-package com.young.blog.dto;
+package com.young.blog.Blog.dto;
 
-import com.young.blog.entity.Blog;
+import com.young.blog.Blog.entity.Blog;
 import lombok.Getter;
 @Getter
 public class BlogResponseDto {

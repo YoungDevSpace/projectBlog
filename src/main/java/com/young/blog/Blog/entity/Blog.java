@@ -1,6 +1,6 @@
-package com.young.blog.entity;
+package com.young.blog.Blog.entity;
 
-import com.young.blog.dto.BlogRequestDto;
+import com.young.blog.Blog.dto.BlogRequestDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

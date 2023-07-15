@@ -1,10 +1,9 @@
-package com.young.blog.controller;
+package com.young.blog.Blog.controller;
 
-import com.young.blog.dto.BlogRequestDto;
-import com.young.blog.dto.BlogResponseDto;
-import com.young.blog.service.BlogService;
+import com.young.blog.Blog.service.BlogService;
+import com.young.blog.Blog.dto.BlogRequestDto;
+import com.young.blog.Blog.dto.BlogResponseDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
