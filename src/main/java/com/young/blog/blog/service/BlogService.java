@@ -1,9 +1,9 @@
-package com.young.blog.service;
+package com.young.blog.blog.service;
 
-import com.young.blog.dto.BlogRequestDto;
-import com.young.blog.dto.BlogResponseDto;
-import com.young.blog.entity.Blog;
-import com.young.blog.repository.BlogRepository;
+import com.young.blog.blog.dto.BlogRequestDto;
+import com.young.blog.blog.dto.BlogResponseDto;
+import com.young.blog.blog.entity.Blog;
+import com.young.blog.blog.repository.BlogRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
